@@ -3,7 +3,7 @@ from apps.book.models import Author
 
 class AuthorSerializer(serializers.ModelSerializer):
 
-    name = serializers.CharField() # read-only by default
+    name = serializers.CharField(read_only=True)
     username = serializers.SerializerMethodField()
 
     def get_username(self, obj): # get serializer method field
