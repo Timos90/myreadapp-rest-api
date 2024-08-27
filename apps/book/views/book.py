@@ -22,7 +22,7 @@ def list_books(request):
 def create_book(request):
     with transaction.atomic():
         data = request.data # retrieve the request body in native Python datatype
-        
+      
         authors = data['authors']
 
         book = CreateBookSerializer(data=data)
