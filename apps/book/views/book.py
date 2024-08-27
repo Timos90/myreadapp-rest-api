@@ -2,6 +2,7 @@ from django.db import transaction
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.views import  APIView
 
 from apps.book.models import Book, Author
 from apps.book.serializers import ReadBookSerializer, CreateBookSerializer
@@ -39,3 +40,24 @@ def create_book(request):
     return Response({'isbn': saved_book.isbn}, status=status.HTTP_201_CREATED)
 
     #return Response({'detail': 'Invalid request data', 'error': 'Invalid_Request'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class BooksView(APIView):
+    def get(self, request):
+        books = Book.objects.all()
+
+        data = ReadBookSerializer(books, many=True)
+
+        return Response({'data':data.data}, status=status.HTTP_200_OK)
+
+    def post(self, request):
+        pass
+
+    def delete(self, request):
+        pass
+
+    def put(self, request):
+        pass
+
+    def patch(self, request):
+        pass
