@@ -19,6 +19,8 @@ CREATED_APP = [
 
 THIRD_PARTY_APP = [
     'rest_framework',
+    'rest_framework.authtoken', # Create token table, after adding this just migrate
+    'dj_rest_auth',
 ]  # third party apps go here
 
 INSTALLED_APPS = [*DEFAULT_APP, *CREATED_APP, *THIRD_PARTY_APP]
